@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honor of Kings - Download</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-top: 20px;
+        }
+
+        .back-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .game-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .game-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 15px;
+            margin-right: 20px;
+            object-fit: cover;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .game-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .game-level {
+            font-size: 16px;
+            color: #b0b0b0;
+            margin-bottom: 5px;
+        }
+
+        .game-dev {
+            font-size: 14px;
+            color: #888;
+        }
+
+        .rating-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+            padding: 15px 0;
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
+        }
+
+        .rating-item {
+            text-align: center;
+            flex: 1;
+        }
+
+        .rating-value {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .rating-label {
+            font-size: 12px;
+            color: #888;
+        }
+
+        .download-section {
+            margin: 30px 0;
+        }
+
+        .download-btn {
+            background: linear-gradient(45deg, #4285f4, #34a853);
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 15px;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(66, 133, 244, 0.4);
+        }
+
+        .install-note {
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+            margin-top: 10px;
+        }
+
+        .preview-section {
+            margin: 30px 0;
+        }
+
+        .preview-container {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .preview-main {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .preview-thumbnails {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 10px 0;
+        }
+
+        .preview-thumb {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .preview-thumb:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(255,255,255,0.3);
+        }
+
+        .preview-thumb.active {
+            border: 2px solid #4285f4;
+        }
+
+        .about-section {
+            margin: 30px 0;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .game-description {
+            color: #b0b0b0;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .tag {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 12px;
+            color: #ccc;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid #333;
+            padding: 10px 0;
+        }
+
+        .nav-items {
+            display: flex;
+            justify-content: space-around;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .nav-item {
+            text-align: center;
+            color: #888;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-item.active {
+            color: #4285f4;
+        }
+
+        .nav-item i {
+            font-size: 20px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .nav-item span {
+            font-size: 10px;
+        }
+
+        .download-progress {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .progress {
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            background: linear-gradient(45deg, #4285f4, #34a853);
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+
+        .star-rating {
+            color: #ffc107;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <button class="back-btn">
+                <i class="bi bi-arrow-left"></i>
+            </button>
+            <button class="menu-btn">
+                <i class="bi bi-three-dots-vertical"></i>
+            </button>
+        </div>
+
+        <!-- Game Info -->
+        <div class="game-info">
+            <img src="https://via.placeholder.com/80x80/4a90e2/ffffff?text=HOK" alt="Honor of Kings" class="game-logo">
+            <div>
+                <div class="game-title">Honor of Kings</div>
+                <div class="game-level">Level Infinite</div>
+                <div class="game-dev">Pembelian dalam aplikasi</div>
+            </div>
+        </div>
+
+        <!-- Rating Section -->
+        <div class="rating-section">
+            <div class="rating-item">
+                <div class="rating-value">
+                    4,3 <span class="star-rating"><i class="bi bi-star-fill"></i></span>
+                </div>
+                <div class="rating-label">1 jt ulasan</div>
+            </div>
+            <div class="rating-item">
+                <div class="rating-value">
+                    <i class="bi bi-download"></i>
+                </div>
+                <div class="rating-label">331 MB</div>
+            </div>
+            <div class="rating-item">
+                <div class="rating-value">12+</div>
+                <div class="rating-label">Rating 12+</div>
+            </div>
+        </div>
+
+        <!-- Download Section -->
+        <div class="download-section">
+            <button class="download-btn" onclick="downloadAPK()">
+                <i class="bi bi-download"></i>
+                Download
+            </button>
+            <div class="download-progress">
+                <div class="progress">
+                    <div class="progress-bar" style="width: 0%"></div>
+                </div>
+                <div class="text-center mt-2" id="download-status">Memulai download...</div>
+            </div>
+            <div class="install-note">Download di ponsel. Tersedia perangkat lainnya.</div>
+        </div>
+
+        <!-- Preview Section -->
+        <div class="preview-section">
+            <div class="preview-container">
+                <img id="main-preview" src="https://via.placeholder.com/360x200/2c3e50/ffffff?text=Game+Preview+1" alt="Game Preview" class="preview-main">
+            </div>
+            <div class="preview-thumbnails">
+                <img src="https://via.placeholder.com/60x60/2c3e50/ffffff?text=1" alt="Preview 1" class="preview-thumb active" onclick="changePreview(this, 'https://via.placeholder.com/360x200/2c3e50/ffffff?text=Game+Preview+1')">
+                <img src="https://via.placeholder.com/60x60/e74c3c/ffffff?text=2" alt="Preview 2" class="preview-thumb" onclick="changePreview(this, 'https://via.placeholder.com/360x200/e74c3c/ffffff?text=Game+Preview+2')">
+                <img src="https://via.placeholder.com/60x60/3498db/ffffff?text=3" alt="Preview 3" class="preview-thumb" onclick="changePreview(this, 'https://via.placeholder.com/360x200/3498db/ffffff?text=Game+Preview+3')">
+                <img src="https://via.placeholder.com/60x60/f39c12/ffffff?text=4" alt="Preview 4" class="preview-thumb" onclick="changePreview(this, 'https://via.placeholder.com/360x200/f39c12/ffffff?text=Game+Preview+4')">
+                <img src="https://via.placeholder.com/60x60/9b59b6/ffffff?text=5" alt="Preview 5" class="preview-thumb" onclick="changePreview(this, 'https://via.placeholder.com/360x200/9b59b6/ffffff?text=Game+Preview+5')">
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <div class="about-section">
+            <div class="section-title">
+                Tentang game ini
+                <i class="bi bi-chevron-right"></i>
+            </div>
+            <div class="game-description">
+                Game Pertarungan MOBA 5vs5 Terbaik! Bentuk Tim Untuk Game MOBA Terbaik.
+            </div>
+            <div class="tags">
+                <div class="tag">#4 gratis - populer di aksi</div>
+                <div class="tag">Strategi</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <div class="nav-items">
+            <a href="#" class="nav-item active">
+                <i class="bi bi-controller"></i>
+                <span>Game</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="bi bi-grid-3x3-gap"></i>
+                <span>Aplikasi</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="bi bi-search"></i>
+                <span>Telusuri</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="bi bi-code-slash"></i>
+                <span>Penawaran</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="bi bi-book"></i>
+                <span>Buku</span>
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function changePreview(thumb, imageUrl) {
+            // Remove active class from all thumbnails
+            document.querySelectorAll('.preview-thumb').forEach(t => t.classList.remove('active'));
+            
+            // Add active class to clicked thumbnail
+            thumb.classList.add('active');
+            
+            // Change main preview image
+            document.getElementById('main-preview').src = imageUrl;
+        }
+
+        function downloadAPK() {
+            const downloadBtn = document.querySelector('.download-btn');
+            const progressSection = document.querySelector('.download-progress');
+            const progressBar = document.querySelector('.progress-bar');
+            const statusText = document.getElementById('download-status');
+            
+            // Show progress section
+            progressSection.style.display = 'block';
+            
+            // Disable download button
+            downloadBtn.disabled = true;
+            downloadBtn.innerHTML = '<i class="bi bi-hourglass-split"></i> Downloading...';
+            
+            // Simulate download progress
+            let progress = 0;
+            const progressInterval = setInterval(() => {
+                progress += Math.random() * 15;
+                if (progress > 100) progress = 100;
+                
+                progressBar.style.width = progress + '%';
+                statusText.textContent = `Downloading... ${Math.round(progress)}%`;
+                
+                if (progress >= 100) {
+                    clearInterval(progressInterval);
+                    
+                    // Create and trigger download
+                    const link = document.createElement('a');
+                    link.href = 'data:application/vnd.android.package-archive;base64,UEsDBBQAAAAIAA=='; // Dummy APK data
+                    link.download = 'game.apk';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    
+                    // Update UI
+                    statusText.innerHTML = '<i class="bi bi-check-circle-fill text-success"></i> Download selesai!';
+                    downloadBtn.disabled = false;
+                    downloadBtn.innerHTML = '<i class="bi bi-download"></i> Download Lagi';
+                    
+                    // Show success message
+                    setTimeout(() => {
+                        alert('File Honor of Kings berhasil didownload!\nSilakan cek folder Download Anda.');
+                        progressSection.style.display = 'none';
+                        progressBar.style.width = '0%';
+                        downloadBtn.innerHTML = '<i class="bi bi-download"></i> Download';
+                    }, 2000);
+                }
+            }, 200);
+        }
+
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to navigation items
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Add click effect to back button
+            document.querySelector('.back-btn').addEventListener('click', function() {
+                window.history.back();
+            });
+
+            // Add click effect to menu button
+            document.querySelector('.menu-btn').addEventListener('click', function() {
+                alert('Menu Options:\n• Share Game\n• Report Issue\n• About Developer');
+            });
+        });
+    </script>
+</body>
+</html>
